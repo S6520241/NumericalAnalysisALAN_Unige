@@ -4,7 +4,7 @@
 
 Questo progetto implementa e analizza algoritmi numerici in C++, focalizzandosi sugli effetti dell'aritmetica a precisione finita e sulla risoluzione di sistemi lineari complessi. 
 
-Il codice esplora la stabilità numerica, il condizionamento delle matrici e l'impatto degli errori di arrotondamento, dimostrando un'applicazione pratica dello standard IEEE 754 per i numeri in virgola mobile[cite: 6].
+Il codice esplora la stabilità numerica, il condizionamento delle matrici e l'impatto degli errori di arrotondamento, dimostrando un'applicazione pratica dello standard IEEE 754 per i numeri in virgola mobile.
 
 ## Struttura del Progetto
 
@@ -13,7 +13,7 @@ Il progetto è diviso in due moduli principali:
 ### 1. Analisi degli Errori e Precisione di Macchina (`errori.cpp`)
 Questo modulo valuta il comportamento dell'hardware e degli algoritmi in condizioni estreme:
 * **Cancellazione Numerica:** Dimostrazione pratica della non-associatività delle operazioni matematiche (es. `(a + b) + c` vs `a + (b + c)`) in presenza di numeri con ordini di grandezza molto diversi.
-* **Polinomio di Taylor:** Approssimazione iterativa di $e^x$[cite: 8]. Implementa logiche condizionali per ridurre gli errori: ad esempio, per valori di $x$ negativi viene utilizzata l'identità $e^{-x} = 1/e^x$ per evitare la cancellazione numerica causata dai segni alternati[cite: 6, 8].
+* **Polinomio di Taylor:** Approssimazione iterativa di $e^x$. Implementa logiche condizionali per ridurre gli errori: ad esempio, per valori di $x$ negativi viene utilizzata l'identità $e^{-x} = 1/e^x$ per evitare la cancellazione numerica causata dai segni alternati.
 * **Precisione di Macchina:** Calcolo iterativo dell'epsilon di macchina per i tipi `float` (circa 7 cifre significative, $1.19 \times 10^{-7}$) e `double` (circa 15 cifre significative, $2.22 \times 10^{-16}$)
 
 ### 2. Risoluzione di Sistemi Lineari (`sistemiLineari.cpp`)
