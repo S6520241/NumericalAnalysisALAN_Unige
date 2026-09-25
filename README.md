@@ -40,3 +40,48 @@ g++ -o errori src/errori.cpp
 # Compilazione ed esecuzione del modulo sui sistemi lineari
 g++ -o sistemi src/sistemiLineari.cpp
 ./sistemi
+```
+____________________________________________________________________
+
+# ProgettoALAN_Unige
+
+# Numerical Analysis and Linear Algebra in C++
+
+This project implements and analyzes numerical algorithms in C++, focusing on the effects of finite precision arithmetic and the resolution of complex linear systems. 
+
+The code explores numerical stability, matrix conditioning, and the impact of rounding errors, demonstrating a practical application of the IEEE 754 standard for floating-point numbers.
+
+## Project Structure
+
+The project is divided into two main modules:
+
+### 1. Error Analysis and Machine Precision (`errori.cpp`)
+This module evaluates hardware and algorithm behavior under extreme conditions:
+* **Numerical Cancellation:** Practical demonstration of the non-associativity of mathematical operations (e.g., `(a + b) + c` vs `a + (b + c)`) when dealing with numbers of vastly different magnitudes.
+* **Taylor Polynomial:** Iterative approximation of $e^x$. It implements conditional logic to reduce errors: for example, for negative values of $x$, the identity $e^{-x} = 1/e^x$ is used to prevent numerical cancellation caused by alternating signs.
+* **Machine Precision:** Iterative calculation of machine epsilon for `float` (approx. 7 significant digits, $1.19 \times 10^{-7}$) and `double` (approx. 15 significant digits, $2.22 \times 10^{-16}$) types.
+
+### 2. Linear Systems Resolution (`sistemiLineari.cpp`)
+This module implements the resolution of linear systems $Ax = b$ using the **Gaussian Elimination with partial pivoting** algorithm, ensuring numerical stability and avoiding divisions by values close to zero.
+The algorithm was tested by calculating the infinity norm and analyzing the conditioning on various types of matrices, including:
+* Standard test matrices (4x4).
+* **Pascal Matrix (10x10):** Used to test the algorithm's stability in the presence of rapidly growing values (factorials).
+* **Tridiagonal Matrix (51x51):** A diagonally dominant matrix used to demonstrate the method's efficiency and accuracy on well-conditioned, larger matrices.
+* **Constant Term Perturbation:** Analysis of the solution's variation in response to a perturbation of vector $b$, confirming the effectiveness of partial pivoting.
+
+## Technologies and Skills
+* **Language:** C++
+* **Theoretical Concepts:** IEEE 754 Standard, Gaussian Elimination, Partial Pivoting, Matrix Conditioning, Computational Complexity.
+
+## Compilation and Execution
+The source code was developed using C++ standard libraries (`<iostream>`, `<cmath>`, `<iomanip>`).
+
+To compile and execute the files separately from the terminal:
+```bash
+# Compilation and execution of the error module
+g++ -o errori src/errori.cpp
+./errori
+
+# Compilation and execution of the linear systems module
+g++ -o sistemi src/sistemiLineari.cpp
+./sistemi
